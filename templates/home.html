@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <title>Weather</title>
+</head>
+
+<body>
+    <section class="hero is-link">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title" >
+                    <img src="https://readme-typing-svg.herokuapp.com?color=%23FFFFFF&height=40&lines=Weather+App;What's+the+Weather+like%3F;Weather+App">
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section ">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form action="/" method="post">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+
+                                <input type="text" size="90" class="input is-rounded" name="city"
+                                    placeholder="Enter City">
+                            </div>
+                            <br>
+                            <div class="control">
+                                <button type="submit" class="button is-link is-rounded">Add City</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container ">
+            <div class="columns ">
+                <div class="column is-offset-4 is-4">
+                    {% for weather in weather_data %}
+
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+
+                            <div class="content">
+                                <p>
+                                    <span class="title">{{weather.cityname}}</span>
+                                    <br>
+                                    <span class="subtitle">Temperature: {{weather.temperature}}° C </span>
+                                    <br>
+                                    <span class="subtitle"></span>Humidity: {{weather.humidity}}%</span>
+                                    <br>
+                                    <span class="subtitle"></span>Pressure: {{weather.pressure}} hPa</span>
+                                    <br>
+                                    <span class="subtitle"></span>Sunrise: {{weather.sunrise}}</span>
+                                    <br>
+                                    <span class="subtitle"></span>Sunset: {{weather.sunset}}</span>
+                                    <br>
+                                    <span class="subtitle"></span>Wind: {{weather.wind}} m/s</span>
+                                    <br>{{weather.desc}}
+
+                                </p>
+                            </div>
+                            <div class="media-right">
+                                <a href="{{ url_for('delete_city', name=weather.cityname) }}">
+                                    <button class="delete"></button>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p style="text-align:center;">
+            Copyright © 2022 <a href="https://vukkarithvik.tech" target="_blank"><strong>Rithvik</strong> </a>❤️ from India 
+        </p>
+    </footer>
+</body>
+<script>
+    document.addEventListener('keydown', function () {
+        if (event.keyCode == 123) {
+            alert("This function has been disabled");
+            return false;
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+            alert("This function has been disabled");
+            return false;
+        } else if (event.ctrlKey && event.keyCode == 85) {
+            alert("This function has been disabled");
+            return false;
+        }
+    }, false);
+
+    if (document.addEventListener) {
+        document.addEventListener('contextmenu', function (e) {
+            alert("This function has been disabled");
+            e.preventDefault();
+        }, false);
+    } else {
+        document.attachEvent('oncontextmenu', function () {
+            alert("This function has been disabled");
+            window.event.returnValue = false;
+        });
+
+    }
+</script>
+</html>
