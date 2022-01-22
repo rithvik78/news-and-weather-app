@@ -14,8 +14,9 @@
     <section class="hero is-link">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title" >
-                    <img src="https://readme-typing-svg.herokuapp.com?color=%23FFFFFF&height=40&lines=Weather+App;What's+the+Weather+like%3F;Weather+App">
+                <h1 class="title">
+                    <img
+                        src="https://readme-typing-svg.herokuapp.com?color=%23FFFFFF&height=40&lines=Weather+App;What's+the+Weather+like%3F;Weather+App">
                 </h1>
             </div>
         </div>
@@ -51,29 +52,30 @@
                     <div class="box">
                         <article class="media">
                             <div class="media-left">
-                                <figure class="image is-60x60">
+                                <figure class="image is-50x50">
                                     <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
                                 </figure>
                             </div>
+                            <div class="media-content ">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{weather.cityname}}</span>
+                                        <br>
+                                        <span class="subtitle">Temperature: {{weather.temperature}}° C </span>
+                                        <br>
+                                        <span class="subtitle"></span>Humidity: {{weather.humidity}}%</span>
+                                        <br>
+                                        <span class="subtitle"></span>Pressure: {{weather.pressure}} hPa</span>
+                                        <br>
+                                        <span class="subtitle"></span>Sunrise: {{weather.sunrise}}</span>
+                                        <br>
+                                        <span class="subtitle"></span>Sunset: {{weather.sunset}}</span>
+                                        <br>
+                                        <span class="subtitle"></span>Wind: {{weather.wind}} m/s</span>
+                                        <br>{{weather.desc}}
 
-                            <div class="content">
-                                <p>
-                                    <span class="title">{{weather.cityname}}</span>
-                                    <br>
-                                    <span class="subtitle">Temperature: {{weather.temperature}}° C </span>
-                                    <br>
-                                    <span class="subtitle"></span>Humidity: {{weather.humidity}}%</span>
-                                    <br>
-                                    <span class="subtitle"></span>Pressure: {{weather.pressure}} hPa</span>
-                                    <br>
-                                    <span class="subtitle"></span>Sunrise: {{weather.sunrise}}</span>
-                                    <br>
-                                    <span class="subtitle"></span>Sunset: {{weather.sunset}}</span>
-                                    <br>
-                                    <span class="subtitle"></span>Wind: {{weather.wind}} m/s</span>
-                                    <br>{{weather.desc}}
-
-                                </p>
+                                    </p>
+                                </div>
                             </div>
                             <div class="media-right">
                                 <a href="{{ url_for('delete_city', name=weather.cityname) }}">
@@ -92,7 +94,8 @@
     </section>
     <footer class="footer">
         <p style="text-align:center;">
-            Copyright © 2022 <a href="https://vukkarithvik.tech" target="_blank"><strong>Rithvik</strong> </a>❤️ from India 
+            Copyright © 2022 <a href="https://vukkarithvik.tech" target="_blank"><strong>Rithvik</strong> </a>❤️ from
+            India
         </p>
     </footer>
 </body>
@@ -123,4 +126,5 @@
 
     }
 </script>
+
 </html>
