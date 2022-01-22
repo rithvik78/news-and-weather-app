@@ -2,6 +2,7 @@ from flask import Flask,render_template,request, redirect, url_for
 import requests
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
+from newsapi import NewsApiClient
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///weather.db'
@@ -9,6 +10,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'thisisasecret'
 
 db = SQLAlchemy(app)
+
+def get_news(category):
+    newsapi = NewsApiClient(api_key='587444a3c0ec46f7905e27bd682f895e')
+    news = newsapi.get_top_headlines(category=category, language='en', country='in')
+    return news
+
 
 class City(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,7 +33,9 @@ def index_get():
     for city in cities:
         
         json_object = get_weather_data(city.name)
-        
+        now = datetime.now()
+        current_time = now.strftime("%H:%M")
+
         
         icon = json_object['weather'][0]['icon']
         sunrise = datetime.utcfromtimestamp(int(json_object['sys']['sunrise']) + int(json_object['timezone']) ).strftime('%H:%M:%S')
@@ -46,7 +55,8 @@ def index_get():
             'humidity': humidity,
             'pressure': pressure,
             'wind': wind,
-            'desc': desc
+            'desc': desc,
+            'current_time': current_time
         }
         weather_data.append(weather)
     return render_template('home.html',weather_data=weather_data)
@@ -78,6 +88,43 @@ def delete_city(name):
     db.session.commit()
 
     return redirect(url_for('index_get'))
+
+
+@app.route('/general')
+def index_get_general():
+    news = get_news('general')
+    return render_template('general.html',news=news)
+
+
+@app.route('/entertainment')
+def index_get_entertainment():
+    news = get_news('entertainment')
+    return render_template('entertainment.html',news=news)
+
+@app.route('/business')
+def index_get_business():
+    news = get_news('business')
+    return render_template('business.html',news=news)
+
+@app.route('/health')
+def index_get_health():
+    news = get_news('health')
+    return render_template('health.html',news=news)
+
+@app.route('/science')
+def index_get_science():
+    news = get_news('science')
+    return render_template('science.html',news=news)
+
+@app.route('/sports')
+def index_get_sports():
+    news = get_news('sports')
+    return render_template('sports.html',news=news)
+
+@app.route('/technology')
+def index_get_technology():
+    news = get_news('technology')
+    return render_template('technology.html',news=news)
 
 if __name__ == '__main__':
     app.run(debug=True)

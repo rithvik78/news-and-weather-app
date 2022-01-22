@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet'>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <title>News</title>
+</head>
+
+<body>
+    <section class="hero is-link">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    <img src="https://readme-typing-svg.herokuapp.com?color=%23FFFFFF&height=40&lines=News+App;">
+                </h1>
+            </div>
+        </div>
+    </section>
+    <div class="tabs is-centered">
+        <ul>
+            <li >
+                <a>
+                    <span class="icon is-small"><i class="fas fa-cloud" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/'">Weather</span>
+                </a>
+            </li>
+            <li class="is-active">
+                <a>
+                    <span class="icon is-small"><i class="fas fa-stream" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/general'">General</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/entertainment'">Entertainment</span>
+                </a>
+            </li>
+            <li >
+                <a>
+                    <span class="icon is-small"><i class="fas fa-briefcase" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/business'">Business</span>
+                </a>
+            </li>
+            <li >
+                <a>
+                    <span class="icon is-small"><i class="fas fa-heartbeat" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/health'">Health</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span class="icon is-small"><i class="fas fa-microscope" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/science'">Science</span>
+                </a>
+            </li>
+            <li >
+                <a>
+                    <span class="icon is-small"><i class="fas fa-quidditch" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/sports'">Sports</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span class="icon is-small"><i class="fas fa-atom" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/technology'">Technology</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <section class="section">
+        <div class="container ">
+            <div class="columns ">
+                <div class="column is-offset-1 is-10">
+                    {% for x in news["articles"] %}
+
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-content ">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{x.title}}</span><br>
+                                        {% if x.author!=None %}
+                                            by {{x.author}} | 
+                                        {% endif %}
+                                        Published on {{x.publishedAt[:10]}} at {{x.publishedAt[11:19]}}  
+                                        {% if x.source.name!=None %}
+                                            | {{x.source.name}} 
+                                        {% endif %}
+                                        <br>
+                                        <span class="subtitle"> <img src="{{x.urlToImage}}"> </span>
+                                        <br>
+                                        <span class="subtitle">{{x.description}}</span>
+                                        <br>
+                                        <span class="subtitle"> <a href = "{{x.url}}" target="_blank">Read More.</a></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p style="text-align:center;">
+            Copyright © 2022 <a href="https://vukkarithvik.tech" target="_blank"><strong>Rithvik</strong> </a>❤️ from
+            India
+        </p>
+    </footer>
+</body>
+<script>
+    document.addEventListener('keydown', function () {
+        if (event.keyCode == 123) {
+            alert("This function has been disabled");
+            return false;
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+            alert("This function has been disabled");
+            return false;
+        } else if (event.ctrlKey && event.keyCode == 85) {
+            alert("This function has been disabled");
+            return false;
+        }
+    }, false);
+
+    if (document.addEventListener) {
+        document.addEventListener('contextmenu', function (e) {
+            alert("This function has been disabled");
+            e.preventDefault();
+        }, false);
+    } else {
+        document.attachEvent('oncontextmenu', function () {
+            alert("This function has been disabled");
+            window.event.returnValue = false;
+        });
+
+    }
+</script>
+
+</html>

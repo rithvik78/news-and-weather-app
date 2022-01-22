@@ -16,11 +16,64 @@
             <div class="container">
                 <h1 class="title">
                     <img
-                        src="https://readme-typing-svg.herokuapp.com?color=%23FFFFFF&height=40&lines=Weather+App;What's+the+Weather+like%3F;Weather+App">
+                        src="https://readme-typing-svg.herokuapp.com?color=%23FFFFFF&height=40&lines=Weather+App;">
                 </h1>
             </div>
         </div>
     </section>
+    <div class="tabs is-centered">
+        <ul>
+            <li class="is-active">
+                <a>
+                    <span class="icon is-small"><i class="fas fa-cloud" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/'">Weather</span>
+                </a>
+            </li>
+            <li >
+                <a>
+                    <span class="icon is-small"><i class="fas fa-stream" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/general'">General</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/entertainment'">Entertainment</span>
+                </a>
+            </li>
+            <li >
+                <a>
+                    <span class="icon is-small"><i class="fas fa-briefcase" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/business'">Business</span>
+                </a>
+            </li>
+            <li >
+                <a>
+                    <span class="icon is-small"><i class="fas fa-heartbeat" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/health'">Health</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span class="icon is-small"><i class="fas fa-microscope" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/science'">Science</span>
+                </a>
+            </li>
+            <li >
+                <a>
+                    <span class="icon is-small"><i class="fas fa-quidditch" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/sports'">Sports</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span class="icon is-small"><i class="fas fa-atom" aria-hidden="true"></i></span>
+                    <span onclick="window.location='/technology'">Technology</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <section class="section ">
         <div class="container">
             <div class="columns">
@@ -73,6 +126,8 @@
                                         <br>
                                         <span class="subtitle"></span>Wind: {{weather.wind}} m/s</span>
                                         <br>{{weather.desc}}
+                                        <br>
+                                        <span class="subtitle"><img src="https://readme-typing-svg.herokuapp.com?font=arial&size=25&color=%23000000&lines=Time%3A+{{weather.current_time}}"> </span>
 
                                     </p>
                                 </div>
